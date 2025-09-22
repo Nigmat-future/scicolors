@@ -9,8 +9,8 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
   const stats = [
-    { icon: Palette, label: '配色方案', value: '10+' },
-    { icon: Beaker, label: '顶级期刊', value: '6+' },
+    { icon: Palette, label: '配色方案', value: '110+' },
+    { icon: Beaker, label: '顶级期刊', value: '15+' },
     { icon: Download, label: '即时复制', value: '100%' },
     { icon: Star, label: '专业推荐', value: '5★' }
   ];
