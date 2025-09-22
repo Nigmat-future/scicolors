@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -57,6 +58,31 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Scientific Journal Colors
+        nature: {
+          blue: "hsl(var(--nature-blue))",
+          green: "hsl(var(--nature-green))",
+          red: "hsl(var(--nature-red))",
+          orange: "hsl(var(--nature-orange))",
+          purple: "hsl(var(--nature-purple))",
+        },
+        cell: {
+          teal: "hsl(var(--cell-teal))",
+          coral: "hsl(var(--cell-coral))",
+          violet: "hsl(var(--cell-violet))",
+          emerald: "hsl(var(--cell-emerald))",
+        },
+      },
+      backgroundImage: {
+        "gradient-primary": "var(--gradient-primary)",
+        "gradient-secondary": "var(--gradient-secondary)",
+        "gradient-background": "var(--gradient-background)",
+        "gradient-card": "var(--gradient-card)",
+      },
+      boxShadow: {
+        "glow-primary": "var(--glow-primary)",
+        "glow-accent": "var(--glow-accent)",
+        "glow-secondary": "var(--glow-secondary)",
       },
       borderRadius: {
         lg: "var(--radius)",

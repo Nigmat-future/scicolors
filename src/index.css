@@ -2,41 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* SCI Research Color Palette Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Scientific Dark Theme */
+    --background: 220 13% 6%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 13% 8%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 13% 8%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
+    /* Scientific Primary - Blue */
+    --primary: 214 84% 56%;
     --primary-foreground: 210 40% 98%;
+    --primary-glow: 214 84% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Scientific Secondary - Teal */
+    --secondary: 174 62% 47%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Scientific Gray */
+    --muted: 220 13% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent Purple for highlights */
+    --accent: 271 81% 56%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 18%;
+    --input: 220 13% 15%;
+    --ring: 214 84% 56%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Scientific Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(271 81% 56%));
+    --gradient-secondary: linear-gradient(135deg, hsl(174 62% 47%), hsl(214 84% 56%));
+    --gradient-background: linear-gradient(135deg, hsl(220 13% 6%) 0%, hsl(220 13% 8%) 50%, hsl(220 13% 6%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 13% 8%) 0%, hsl(220 13% 12%) 100%);
+
+    /* Glow Effects */
+    --glow-primary: 0 0 30px hsl(214 84% 56% / 0.3);
+    --glow-accent: 0 0 30px hsl(271 81% 56% / 0.3);
+    --glow-secondary: 0 0 30px hsl(174 62% 47% / 0.3);
+
+    /* Scientific Color Palettes */
+    --nature-blue: 41 98% 55%;
+    --nature-green: 142 71% 45%;
+    --nature-red: 0 84% 60%;
+    --nature-orange: 25 95% 53%;
+    --nature-purple: 271 81% 56%;
+
+    --cell-teal: 174 62% 47%;
+    --cell-coral: 14 100% 57%;
+    --cell-violet: 262 83% 58%;
+    --cell-emerald: 160 84% 39%;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +132,108 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  /* Scientific Color Palette Cards */
+  .palette-card {
+    @apply relative overflow-hidden rounded-xl border border-border/50;
+    background: var(--gradient-card);
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+  }
+
+  .palette-card:hover {
+    @apply border-primary/50;
+    box-shadow: var(--glow-primary);
+    transform: translateY(-2px);
+  }
+
+  /* Color Swatch Animations */
+  .color-swatch {
+    @apply relative cursor-pointer rounded-lg transition-all duration-300;
+    transform: scale(1);
+  }
+
+  .color-swatch:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Scientific Chart Styles */
+  .chart-preview {
+    @apply relative overflow-hidden rounded-lg;
+    background: linear-gradient(145deg, hsl(220 13% 10%) 0%, hsl(220 13% 8%) 100%);
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  /* Animated Background Elements */
+  .floating-orb {
+    @apply absolute rounded-full opacity-20 animate-pulse;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  }
+
+  /* Interactive Elements */
+  .interactive-hover {
+    transition: var(--transition-bounce);
+  }
+
+  .interactive-hover:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  /* Copy Animation */
+  .copy-success {
+    @apply animate-bounce;
+  }
+
+  /* Scientific Typography */
+  .scientific-title {
+    @apply text-4xl font-bold;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-move 3s ease infinite;
+  }
+
+  @keyframes gradient-move {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Chart Type Indicators */
+  .chart-type-badge {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(var(--primary), 0.1);
+    border: 1px solid rgba(var(--primary), 0.3);
+    color: hsl(var(--primary));
+  }
+
+  /* Color Code Display */
+  .color-code {
+    @apply font-mono text-xs px-2 py-1 rounded;
+    background: rgba(var(--muted), 0.5);
+    border: 1px solid rgba(var(--border), 0.5);
   }
 }
