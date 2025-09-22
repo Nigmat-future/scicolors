@@ -1,15 +1,17 @@
 import React, { useState, useRef } from 'react';
-import { Search, Filter, Beaker, Microscope, Atom, Dna, FlaskConical } from 'lucide-react';
+import { Search, Filter, Beaker, Microscope, Atom, Dna, FlaskConical, Sparkles } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ColorPaletteCard } from '@/components/ColorPaletteCard';
 import { HeroSection } from '@/components/HeroSection';
+import { ImageColorExtractor } from '@/components/ImageColorExtractor';
 import { colorPalettes, journalCategories } from '@/data/colorPalettes';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [showExtractor, setShowExtractor] = useState(false);
   const palettesRef = useRef<HTMLDivElement>(null);
 
   // 过滤配色方案
@@ -66,8 +68,21 @@ const Index = () => {
             />
           </div>
 
-          {/* 分类筛选 */}
+          {/* 分类筛选和图片提取 */}
           <div className="flex items-center justify-center gap-2 flex-wrap">
+            {/* 图片颜色提取按钮 */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowExtractor(true)}
+              className="interactive-hover bg-gradient-primary/10 border-primary/30 hover:bg-gradient-primary/20 text-primary"
+            >
+              <Sparkles className="w-3 h-3 mr-1" />
+              图片提取
+            </Button>
+            
+            <div className="w-px h-4 bg-border/50" />
+            
             <Button
               variant={selectedCategory === 'all' ? 'default' : 'secondary'}
               size="sm"
@@ -133,6 +148,12 @@ const Index = () => {
           </p>
         </div>
       </div>
+
+      {/* 图片颜色提取器 */}
+      <ImageColorExtractor 
+        isOpen={showExtractor} 
+        onClose={() => setShowExtractor(false)} 
+      />
     </div>
   );
 };
