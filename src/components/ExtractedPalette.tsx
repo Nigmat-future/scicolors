@@ -30,13 +30,13 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
         setTimeout(() => setCopiedIndex(null), 2000);
       }
       toast({
-        title: "复制成功",
-        description: `${type} 颜色代码已复制到剪贴板`,
+        title: "Copy successful",
+        description: `${type} color code copied to clipboard`,
       });
     } catch (error) {
       toast({
-        title: "复制失败",
-        description: "无法复制到剪贴板，请手动复制",
+        title: "Copy failed",
+        description: "Unable to copy to clipboard, please copy manually",
         variant: "destructive",
       });
     }
@@ -44,12 +44,12 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
 
   const copyAllColors = () => {
     const hexColors = result.colors.map(color => color.hex).join(', ');
-    copyToClipboard(hexColors, undefined, '完整调色板');
+    copyToClipboard(hexColors, undefined, 'Complete Palette');
   };
 
   const downloadPalette = () => {
     const paletteData = {
-      name: `提取自 ${result.imageInfo.fileName}`,
+      name: `Extracted from ${result.imageInfo.fileName}`,
       colors: result.colors,
       extractedAt: new Date().toISOString(),
       source: result.imageInfo
@@ -66,8 +66,8 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
     URL.revokeObjectURL(url);
     
     toast({
-      title: "下载完成",
-      description: "调色板已导出为 JSON 文件",
+      title: "Download completed",
+      description: "Palette exported as JSON file",
     });
   };
 
@@ -80,7 +80,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
             <div className="relative flex-shrink-0">
               <img
                 src={result.originalImage}
-                alt="原图"
+                alt="Original image"
                 className="w-20 h-20 object-cover rounded-lg border border-border/50"
               />
               <div className="absolute -bottom-1 -right-1 bg-primary/20 backdrop-blur-sm rounded-full p-1">
@@ -97,7 +97,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
                   {formatFileSize(result.imageInfo.fileSize)}
                 </Badge>
                 <Badge variant="outline" className="text-xs">
-                  {result.colors.length} 种颜色
+                  {result.colors.length} colors
                 </Badge>
               </div>
             </div>
@@ -111,7 +111,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2">
               <Palette className="w-5 h-5" />
-              提取的配色方案
+              Extracted Color Palette
             </CardTitle>
             <div className="flex gap-2">
               <Button
@@ -121,7 +121,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
                 className="bg-card/50 hover:bg-card"
               >
                 <Eye className="w-4 h-4 mr-1" />
-                {showPreview ? '隐藏' : '预览'}
+                {showPreview ? 'Hide' : 'Preview'}
               </Button>
               <Button
                 variant="outline"
@@ -130,7 +130,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
                 className="bg-card/50 hover:bg-card"
               >
                 <Copy className="w-4 h-4 mr-1" />
-                复制全部
+                Copy All
               </Button>
               <Button
                 variant="outline"
@@ -139,7 +139,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
                 className="bg-card/50 hover:bg-card"
               >
                 <Download className="w-4 h-4 mr-1" />
-                导出
+                Export
               </Button>
             </div>
           </div>
@@ -192,7 +192,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <BarChart3 className="w-4 h-4" />
-                  <span className="text-sm font-medium">图表预览</span>
+                  <span className="text-sm font-medium">Chart Preview</span>
                 </div>
                 <ChartPreview colors={result.colors.map(c => c.hex)} />
               </div>
@@ -204,7 +204,7 @@ export const ExtractedPalette: React.FC<ExtractedPaletteProps> = ({
           <div className="space-y-3">
             <h4 className="text-sm font-semibold flex items-center gap-2">
               <Copy className="w-4 h-4" />
-              颜色代码详情
+              Color Code Details
             </h4>
             <div className="grid gap-2">
               {result.colors.map((color, index) => (

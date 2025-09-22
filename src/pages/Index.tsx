@@ -14,7 +14,7 @@ const Index = () => {
   const [showExtractor, setShowExtractor] = useState(false);
   const palettesRef = useRef<HTMLDivElement>(null);
 
-  // 过滤配色方案
+  // Filter color palettes
   const filteredPalettes = colorPalettes.filter(palette => {
     const matchesSearch = palette.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          palette.journal.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -43,34 +43,34 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection onGetStarted={scrollToPalettes} />
 
-      {/* 配色方案区域 */}
+      {/* Color Palettes Section */}
       <div ref={palettesRef} className="relative z-10 container mx-auto px-4 py-16">
-        {/* 搜索和筛选 */}
+        {/* Search and Filter */}
         <div className="mb-8 space-y-6">
-          {/* 区域标题 */}
+          {/* Section Title */}
           <div className="text-center">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              精选配色方案
+              Featured Color Palettes
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              从世界顶级科研期刊中精心挑选的配色方案，为您的学术图表提供专业美观的颜色搭配
+              Carefully selected color schemes from world-class scientific journals, providing professional and beautiful color combinations for your academic charts
             </p>
           </div>
 
-          {/* 搜索框 */}
+          {/* Search Box */}
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
-              placeholder="搜索配色方案、期刊名称..."
+              placeholder="Search palettes, journal names..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 bg-card/50 border-border/50 focus:border-primary/50"
             />
           </div>
 
-          {/* 分类筛选和图片提取 */}
+          {/* Category Filter and Image Extraction */}
           <div className="flex items-center justify-center gap-2 flex-wrap">
-            {/* 图片颜色提取按钮 */}
+            {/* Image Color Extraction Button */}
             <Button
               variant="outline"
               size="sm"
@@ -78,7 +78,7 @@ const Index = () => {
               className="interactive-hover bg-gradient-primary/10 border-primary/30 hover:bg-gradient-primary/20 text-primary"
             >
               <Sparkles className="w-3 h-3 mr-1" />
-              图片提取
+              Extract Colors
             </Button>
             
             <div className="w-px h-4 bg-border/50" />
@@ -90,7 +90,7 @@ const Index = () => {
               className="interactive-hover"
             >
               <Filter className="w-3 h-3 mr-1" />
-              全部
+              All
             </Button>
             {Object.entries(journalCategories).map(([key, category]) => {
               const IconComponent = categoryIcons[key as keyof typeof categoryIcons];
@@ -109,16 +109,16 @@ const Index = () => {
             })}
           </div>
 
-          {/* 统计信息 */}
+          {/* Statistics */}
           <div className="text-center">
             <Badge variant="outline" className="bg-card/50 border-border/50 text-foreground">
-              {filteredPalettes.length} 个配色方案
+              {filteredPalettes.length} color palettes
               {selectedCategory !== 'all' && ` • ${journalCategories[selectedCategory as keyof typeof journalCategories].name}`}
             </Badge>
           </div>
         </div>
 
-        {/* 配色方案网格 */}
+        {/* Color Palette Grid */}
         {filteredPalettes.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredPalettes.map(palette => (
@@ -131,25 +131,25 @@ const Index = () => {
               <Search className="w-8 h-8 text-muted-foreground" />
             </div>
             <h3 className="text-lg font-medium text-foreground mb-2">
-              未找到相关配色方案
+              No color palettes found
             </h3>
             <p className="text-muted-foreground">
-              请尝试使用其他关键词搜索或选择不同的分类
+              Try using different keywords or select a different category
             </p>
           </div>
         )}
 
-        {/* 页脚信息 */}
+        {/* Footer Information */}
         <div className="mt-16 text-center text-sm text-muted-foreground">
           <p>
-            配色方案来源于 Nature、Science、Cell 等顶级期刊文献 • 
+            Color schemes sourced from Nature, Science, Cell and other top journal publications • 
             <span className="mx-1">•</span>
-            专为科研工作者设计
+            Designed specifically for researchers
           </p>
         </div>
       </div>
 
-      {/* 图片颜色提取器 */}
+      {/* Image Color Extractor */}
       <ImageColorExtractor 
         isOpen={showExtractor} 
         onClose={() => setShowExtractor(false)} 

@@ -9,10 +9,10 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
   const stats = [
-    { icon: Palette, label: '配色方案', value: '110+' },
-    { icon: Beaker, label: '顶级期刊', value: '15+' },
-    { icon: Download, label: '即时复制', value: '100%' },
-    { icon: Star, label: '专业推荐', value: '5★' }
+    { icon: Palette, label: 'Color Palettes', value: '110+' },
+    { icon: Beaker, label: 'Top Journals', value: '15+' },
+    { icon: Download, label: 'Instant Copy', value: '100%' },
+    { icon: Star, label: 'Professional', value: '5★' }
   ];
 
   return (
@@ -34,33 +34,33 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 text-center">
-        {/* 主标题 */}
+        {/* Main Title */}
         <div className="mb-8">
           <h1 className="scientific-title text-5xl md:text-7xl mb-6">
-            SCI 论文配色方案
+            SCI Paper Color Palettes
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            精选 <span className="text-primary font-semibold">Nature</span>、
-            <span className="text-secondary font-semibold">Science</span>、
-            <span className="text-accent font-semibold">Cell</span> 等顶级期刊常用配色方案
+            Curated color schemes from top journals like <span className="text-primary font-semibold">Nature</span>, 
+            <span className="text-secondary font-semibold">Science</span>, and
+            <span className="text-accent font-semibold">Cell</span>
             <br className="hidden md:block" />
-            专为科研人员打造的专业配色工具
+            Professional color palette tool designed for researchers
           </p>
         </div>
 
-        {/* 特色亮点 */}
+        {/* Feature Highlights */}
         <div className="mb-10 flex flex-wrap items-center justify-center gap-4 text-sm">
           <div className="flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2">
             <div className="w-2 h-2 rounded-full bg-primary" />
-            <span className="text-foreground">顶刊标准配色</span>
+            <span className="text-foreground">Top Journal Standards</span>
           </div>
           <div className="flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2">
             <div className="w-2 h-2 rounded-full bg-secondary" />
-            <span className="text-foreground">多图表类型预览</span>
+            <span className="text-foreground">Multi-Chart Preview</span>
           </div>
           <div className="flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2">
             <div className="w-2 h-2 rounded-full bg-accent" />
-            <span className="text-foreground">一键复制代码</span>
+            <span className="text-foreground">One-Click Copy</span>
           </div>
         </div>
 
@@ -78,7 +78,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
           ))}
         </div>
 
-        {/* 行动按钮 */}
+        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
             size="lg"
@@ -86,7 +86,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
             className="px-8 py-6 text-lg interactive-hover glow-primary"
           >
             <Palette className="w-5 h-5 mr-2" />
-            开始选择配色
+            Browse Color Palettes
           </Button>
           
           <Button 
@@ -95,14 +95,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
             onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
             className="px-8 py-6 text-lg interactive-hover bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/80"
           >
-            了解更多
+            Learn More
           </Button>
         </div>
 
-        {/* 信任标识 */}
+        {/* Trust Indicators */}
         <div className="mt-12 text-xs text-muted-foreground">
           <p>
-            配色方案来源于 Nature、Science、Cell 等顶级期刊文献
+            Color schemes sourced from Nature, Science, Cell and other top journal publications
           </p>
         </div>
       </div>

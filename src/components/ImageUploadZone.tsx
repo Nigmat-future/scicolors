@@ -52,13 +52,13 @@ export const ImageUploadZone: React.FC<ImageUploadZoneProps> = ({
   const handleFileSelection = (file: File) => {
     // Validate file type
     if (!isValidImageFile(file)) {
-      setError('请上传有效的图片文件 (JPG, PNG, WEBP, GIF)');
+      setError('Please upload a valid image file (JPG, PNG, WEBP, GIF)');
       return;
     }
 
     // Validate file size (max 10MB)
     if (file.size > 10 * 1024 * 1024) {
-      setError('图片文件大小不能超过 10MB');
+      setError('Image file size cannot exceed 10MB');
       return;
     }
 
@@ -119,16 +119,16 @@ export const ImageUploadZone: React.FC<ImageUploadZoneProps> = ({
             "text-lg font-semibold transition-colors duration-300",
             isDragActive ? "text-primary" : "text-foreground"
           )}>
-            {isProcessing ? '正在提取颜色...' : '上传图片提取配色'}
+            {isProcessing ? 'Extracting colors...' : 'Upload Image to Extract Colors'}
           </h3>
           <p className="text-sm text-muted-foreground max-w-xs">
             {isDragActive
-              ? '松开鼠标上传图片'
-              : '拖拽图片到此处，或点击选择文件'
+              ? 'Release to upload image'
+              : 'Drag image here or click to select file'
             }
           </p>
           <p className="text-xs text-muted-foreground">
-            支持 JPG、PNG、WEBP、GIF 格式，最大 10MB
+            Supports JPG, PNG, WEBP, GIF formats, max 10MB
           </p>
         </div>
 
@@ -144,7 +144,7 @@ export const ImageUploadZone: React.FC<ImageUploadZoneProps> = ({
             }}
           >
             <ImageIcon className="w-4 h-4 mr-2" />
-            选择图片
+            Select Image
           </Button>
         )}
 
@@ -163,7 +163,7 @@ export const ImageUploadZone: React.FC<ImageUploadZoneProps> = ({
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-xl flex items-center justify-center">
             <div className="text-center space-y-2">
               <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-              <p className="text-sm text-muted-foreground">分析图片中...</p>
+              <p className="text-sm text-muted-foreground">Analyzing image...</p>
             </div>
           </div>
         )}

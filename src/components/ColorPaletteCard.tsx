@@ -22,13 +22,13 @@ export const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ palette }) =
       setCopiedColor(text);
       
       toast({
-        title: "已复制!",
-        description: `${type === 'palette' ? '配色方案' : '颜色代码'} 已复制到剪贴板`,
+        title: "Copied!",
+        description: `${type === 'palette' ? 'Color palette' : 'Color code'} copied to clipboard`,
       });
       
       setTimeout(() => setCopiedColor(null), 2000);
     } catch (err) {
-      console.error('复制失败:', err);
+      console.error('Copy failed:', err);
     }
   };
 
@@ -76,7 +76,7 @@ export const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ palette }) =
           <div className="flex items-center justify-between">
             <h4 className="text-sm font-medium text-foreground flex items-center gap-2">
               <Palette className="w-4 h-4" />
-              配色方案
+              Color Palette
             </h4>
             <Button
               variant="ghost"
@@ -89,7 +89,7 @@ export const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ palette }) =
               ) : (
                 <Copy className="w-3 h-3 mr-1" />
               )}
-              复制全部
+              Copy All
             </Button>
           </div>
 
@@ -108,7 +108,7 @@ export const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ palette }) =
 
         {/* 图表类型 */}
         <div className="space-y-2">
-          <h4 className="text-sm font-medium text-foreground">适用图表类型</h4>
+          <h4 className="text-sm font-medium text-foreground">Suitable Chart Types</h4>
           <div className="flex flex-wrap gap-2">
             {palette.chartTypes.map((type, index) => (
               <span
@@ -124,7 +124,7 @@ export const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ palette }) =
         {/* 图表预览 */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-medium text-foreground">预览效果</h4>
+            <h4 className="text-sm font-medium text-foreground">Preview</h4>
             <Button
               variant="ghost"
               size="sm"
@@ -132,7 +132,7 @@ export const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ palette }) =
               className="h-8 px-3 text-xs hover:bg-primary/10"
             >
               <Eye className="w-3 h-3 mr-1" />
-              {showPreview ? '隐藏' : '查看'}
+              {showPreview ? 'Hide' : 'View'}
             </Button>
           </div>
           
@@ -145,7 +145,7 @@ export const ColorPaletteCard: React.FC<ColorPaletteCardProps> = ({ palette }) =
 
         {/* 颜色代码详情 */}
         <div className="space-y-2 pt-2 border-t border-border/50">
-          <h4 className="text-sm font-medium text-foreground">颜色代码</h4>
+          <h4 className="text-sm font-medium text-foreground">Color Codes</h4>
           <div className="space-y-1 max-h-32 overflow-y-auto">
             {palette.colors.map((color, index) => {
               const rgb = hexToRgb(color);

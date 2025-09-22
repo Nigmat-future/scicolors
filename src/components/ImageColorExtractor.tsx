@@ -34,15 +34,15 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
       setExtractionResult(result);
       
       toast({
-        title: "颜色提取成功",
-        description: `从图片中提取了 ${result.colors.length} 种主要颜色`,
+        title: "Color extraction successful",
+        description: `Extracted ${result.colors.length} main colors from the image`,
       });
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : '颜色提取失败';
+      const errorMessage = error instanceof Error ? error.message : 'Color extraction failed';
       setError(errorMessage);
       
       toast({
-        title: "提取失败",
+        title: "Extraction failed",
         description: errorMessage,
         variant: "destructive",
       });
@@ -71,7 +71,7 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                 <Sparkles className="w-5 h-5 text-primary" />
               </div>
-              AI 图片配色提取
+              AI Image Color Extraction
             </DialogTitle>
             <Button
               variant="ghost"
@@ -85,13 +85,13 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
           <div className="flex flex-wrap items-center gap-2 pt-2">
             <Badge variant="outline" className="bg-card/50 border-border/50">
               <Palette className="w-3 h-3 mr-1" />
-              智能颜色分析
+              Smart Color Analysis
             </Badge>
             <Badge variant="outline" className="bg-card/50 border-border/50">
-              K-means 聚类算法
+              K-means Clustering
             </Badge>
             <Badge variant="outline" className="bg-card/50 border-border/50">
-              即时预览
+              Instant Preview
             </Badge>
           </div>
         </DialogHeader>
@@ -103,7 +103,7 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
               {!isProcessing && (
                 <div className="space-y-3">
                   <label className="text-sm font-medium text-foreground">
-                    提取颜色数量: {numColors[0]} 种
+                    Number of colors to extract: {numColors[0]}
                   </label>
                   <Slider
                     value={numColors}
@@ -114,8 +114,8 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
                     className="w-full"
                   />
                   <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>3 种 (简约)</span>
-                    <span>8 种 (丰富)</span>
+                    <span>3 (Minimal)</span>
+                    <span>8 (Rich)</span>
                   </div>
                 </div>
               )}
@@ -130,13 +130,13 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
               <div className="bg-card/30 border border-border/50 rounded-lg p-4">
                 <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-primary" />
-                  使用技巧
+                  Usage Tips
                 </h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• 选择色彩丰富、对比度好的图片效果更佳</li>
-                  <li>• 系统会自动过滤背景色和相似颜色</li>
-                  <li>• 提取结果按颜色在图片中的占比排序</li>
-                  <li>• 支持一键复制颜色代码和导出调色板</li>
+                  <li>• Choose images with rich colors and good contrast for better results</li>
+                  <li>• System automatically filters background colors and similar colors</li>
+                  <li>• Extraction results are sorted by color dominance in the image</li>
+                  <li>• Supports one-click copy of color codes and palette export</li>
                 </ul>
               </div>
             </>
@@ -148,7 +148,7 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
               <div className="flex items-start gap-2">
                 <AlertCircle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-destructive mb-1">颜色提取失败</h4>
+                  <h4 className="font-semibold text-destructive mb-1">Color extraction failed</h4>
                   <p className="text-sm text-destructive/80">{error}</p>
                   <Button
                     variant="outline"
@@ -156,7 +156,7 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
                     onClick={handleReset}
                     className="mt-3 bg-card/50 hover:bg-card border-border/50"
                   >
-                    重新尝试
+                    Try Again
                   </Button>
                 </div>
               </div>
@@ -167,14 +167,14 @@ export const ImageColorExtractor: React.FC<ImageColorExtractorProps> = ({
           {extractionResult && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-foreground">提取结果</h3>
+                <h3 className="text-lg font-semibold text-foreground">Extraction Results</h3>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={handleReset}
                   className="bg-card/50 hover:bg-card border-border/50"
                 >
-                  重新上传
+                  Upload New Image
                 </Button>
               </div>
               <ExtractedPalette result={extractionResult} />
